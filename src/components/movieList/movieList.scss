@@ -7,7 +7,9 @@ movie-list .movie-list--item-container .card {
   overflow: visible;
 }
 
-@media #{small-and-down} {
+/* TODO: hard coded breakponts should be replaced with materialize-css breakpoints */
+
+@media (max-width: 480px) {
   movie-list .movie-list--item-container {
     -webkit-column-count: 1;
     -moz-column-count: 1;
@@ -15,7 +17,7 @@ movie-list .movie-list--item-container .card {
   }
 }
 
-@media #{$medium-and-up} {
+@media (min-width: 481px) and (max-width: 720px) {
   movie-list .movie-list--item-container {
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -23,7 +25,7 @@ movie-list .movie-list--item-container .card {
   }
 }
 
-@media #{$large-and-up} {
+@media (min-width: 721px) {
   movie-list .movie-list--item-container {
     -webkit-column-count: 3;
     -moz-column-count: 3;

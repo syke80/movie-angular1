@@ -12,7 +12,7 @@ export default class AppController {
     }
 
     fetchMovies() {
-        this.movieService.getMovieList(this.searchString)
+        this.movieService.getDetailedMovieList(this.searchString)
             .then(
                 (movies => this.handleFetchSuccessful(movies)),
                 (movies => this.handleFetchError(movies))
@@ -20,11 +20,10 @@ export default class AppController {
     }
 
     handleFetchSuccessful(movies) {
-        console.log('successful fetch in app controller', movies);
         this.movies = movies
     }
 
     handleFetchError(movies) {
-        console.log('unsuccessful fetch in app controller', movies);
+        // TODO
     }
 }

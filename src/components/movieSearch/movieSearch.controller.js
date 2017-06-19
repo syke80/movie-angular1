@@ -4,7 +4,6 @@ class MovieSearchController {
     }
 
     onChangeSearchString() {
-        console.log('search string has been changed', this.searchString);
         let searchString = this.searchString;
         this.searchChange({searchString});
     }
