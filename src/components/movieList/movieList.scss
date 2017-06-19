@@ -1,0 +1,32 @@
+movie-list .movie-list--item-container {
+  column-break-inside: avoid;
+}
+
+movie-list .movie-list--item-container .card {
+  display: inline-block;
+  overflow: visible;
+}
+
+@media #{small-and-down} {
+  movie-list .movie-list--item-container {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+  }
+}
+
+@media #{$medium-and-up} {
+  movie-list .movie-list--item-container {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media #{$large-and-up} {
+  movie-list .movie-list--item-container {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+  }
+}
