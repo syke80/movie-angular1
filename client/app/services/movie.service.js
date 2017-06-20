@@ -1,7 +1,6 @@
 import MovieModel from '../models/movie.model.js';
 
 const EMPTY_MOVIELIST = [];
-const EMPTY_MOVIE = {};
 
 function convertMovieListResponseToMovieArray(response) {
     let movies = [];
@@ -80,14 +79,14 @@ export default class MovieService {
                     i: imdbId
                 }
             }).then(response => {
-                if (response.data) {
+                if (response.data && response.data.imdbID) {
                     resolve(convertMovieResponseToMovie(response.data));
                 }
                 else {
-                    resolve(EMPTY_MOVIE);
+                    reject();
                 }
             }, response => {
-                reject(EMPTY_MOVIE);
+                reject();
             });
         })
     }
