@@ -80,6 +80,7 @@ export default class MovieService {
                     i: imdbId
                 }
             }).then(response => {
+                console.log('!!!DEBUG!!!', response);
                 if (response.data) {
                     resolve(convertMovieResponseToMovie(response.data));
                 }
@@ -90,5 +91,47 @@ export default class MovieService {
                 reject(EMPTY_MOVIE);
             });
         })
+    }
+
+    play2(id) {
+        var deferred = this.$q.defer();
+
+            if (id > 3) {
+                console.log('!!!! play2 done');
+                deferred.resolve({myStatus: 'done'});
+            }
+            else {
+                console.log('!!!!! play2 re');
+                deferred.reject({myStatus: 'error'});
+            }
+
+        return deferred.promise;
+    }
+
+    play(imdbId) {
+/*
+        return this.$http({
+            method: 'GET',
+            url: this.configService.getMovieEndpoint(),
+            params: {
+                apiKey: this.configService.getApiKey(),
+                i: imdbId
+            }
+        });
+        */
+
+        return this.$http({
+            method: 'GET',
+            url: this.configService.getMovieEndpoint(),
+            params: {
+                apiKey: this.configService.getApiKey(),
+                i: imdbId
+            }
+        }).then(response => {
+            console.log('!!!DEBUG!!!', response.data);
+        }, response => {
+            console.log('!!!DEBUG!!! rejected', response.data);
+        });
+
     }
 }
