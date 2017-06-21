@@ -90,19 +90,4 @@ export default class MovieService {
             });
         })
     }
-
-    play2(id) {
-        var deferred = this.$q.defer();
-
-            if (id > 3) {
-                console.log('!!!! play2 done');
-                deferred.resolve({myStatus: 'done'});
-            }
-            else {
-                console.log('!!!!! play2 re');
-                deferred.reject({myStatus: 'error'});
-            }
-
-        return deferred.promise;
-    }
 }
