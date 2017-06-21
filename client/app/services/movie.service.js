@@ -1,7 +1,6 @@
 import MovieModel from '../models/movie.model.js';
 
 const EMPTY_MOVIELIST = [];
-const EMPTY_MOVIE = {};
 
 function convertMovieListResponseToMovieArray(response) {
     let movies = [];
@@ -80,15 +79,14 @@ export default class MovieService {
                     i: imdbId
                 }
             }).then(response => {
-                console.log('!!!DEBUG!!!', response);
-                if (response.data) {
+                if (response.data && response.data.imdbID) {
                     resolve(convertMovieResponseToMovie(response.data));
                 }
                 else {
-                    resolve(EMPTY_MOVIE);
+                    reject();
                 }
             }, response => {
-                reject(EMPTY_MOVIE);
+                reject();
             });
         })
     }
@@ -106,32 +104,5 @@ export default class MovieService {
             }
 
         return deferred.promise;
-    }
-
-    play(imdbId) {
-/*
-        return this.$http({
-            method: 'GET',
-            url: this.configService.getMovieEndpoint(),
-            params: {
-                apiKey: this.configService.getApiKey(),
-                i: imdbId
-            }
-        });
-        */
-
-        return this.$http({
-            method: 'GET',
-            url: this.configService.getMovieEndpoint(),
-            params: {
-                apiKey: this.configService.getApiKey(),
-                i: imdbId
-            }
-        }).then(response => {
-            console.log('!!!DEBUG!!!', response.data);
-        }, response => {
-            console.log('!!!DEBUG!!! rejected', response.data);
-        });
-
     }
 }
